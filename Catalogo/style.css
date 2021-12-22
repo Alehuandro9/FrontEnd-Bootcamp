@@ -1,0 +1,75 @@
+.contenedorMenu{
+    height: 60px;
+}
+
+.menu{
+    background-color: #24a335;
+}
+
+.contenedorCarousel{
+    height: 200px;
+    overflow: hidden;
+}
+
+.bloquePrincipal{
+    background-color: #E5E5E5;
+    border: black 0.5px solid;
+    height: 200px;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    overflow: hidden;
+}
+
+.nuestroEquipoContenedor{
+    background-color: #FE6D73;
+    height: 800px;
+    overflow: hidden;
+}
+
+.nuestroEquipoTexto{
+    height: 50px;
+    font-size: 35px;
+    font-family: 'Times New Roman', Times, serif;
+    overflow: hidden;
+}
+
+.primeraSeccionIMG {
+    background-color: #E5E5E5;
+    height: 200px;
+    font-size: 35px;
+    font-family: 'Times New Roman', Times, serif;
+    overflow: hidden;
+}
+
+.infoPrimeraSeccion{
+    font-size: 15px;
+}
+
+.imagenesPS{
+    width:100%;
+    height: 100%;
+}
+
+.separador{
+    height: 50px;
+}
+
+.contenedorEquipo{
+    height: 150px;
+}
+
+.imagenEquipo{
+    width:40%;
+    height: 100%;
+}
+
+.divMapa{
+    height: 300px;
+}
+
+.imagenMapa{
+    width:50%;
+    height: 50%;
+    margin-top: 50px;
+}
+
