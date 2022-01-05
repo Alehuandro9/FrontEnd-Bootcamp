@@ -26,6 +26,13 @@ function pulsarBoton(valor) {
             iterador++;
             pintarValores("0", true);
             break;
+        case "borrar":
+            if (memoria[iterador] == "") {
+                memoria[iterator] = memoria[iterator].substring(0, memoria[iterator].length - 1);
+                pintarValores(memoria[iterador], false);
+            }
+
+            break;
         default:
             if (memoria[iterador] == undefined) {
                 memoria[iterador] = valor;
@@ -54,20 +61,20 @@ function pintarValores(valorPintar, operador) {
 }
 
 function Calcular() {
-    let resultado = parseInt(memoria[0]);
+    let resultado = parseFloat(memoria[0]);
     for (var i = 1; i < memoria.length; i = i + 2) {
         switch (memoria[i]) {
             case "/":
-                resultado = resultado / parseInt(memoria[i + 1]);
+                resultado = resultado / parseFloat(memoria[i + 1]);
                 break;
             case "*":
-                resultado = resultado * parseInt(memoria[i + 1]);
+                resultado = resultado * parseFloat(memoria[i + 1]);
                 break;
             case "-":
-                resultado = resultado - parseInt(memoria[i + 1]);
+                resultado = resultado - parseFloat(memoria[i + 1]);
                 break;
             case "+":
-                resultado = resultado + parseInt(memoria[i + 1]);
+                resultado = resultado + parseFloat(memoria[i + 1]);
                 break;
         }
     }
@@ -81,4 +88,4 @@ for (var i = 0; i < botonesFuncionales.length; i++) {
     botonesFuncionales[i].addEventListener('click', function () { pulsarBoton(this.value) });
 }
 
-botonIgual.addEventListener('click', function () { Calcular() });
+botonIgual.addEventListener('click', function () { if(memoria.length>2){Calcular()}else(pintarValores("0", false)) });
