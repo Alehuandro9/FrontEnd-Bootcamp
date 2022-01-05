@@ -8,7 +8,7 @@
     border: 2px solid black;
     height: 15%;
     width: 98%;
-    background-color: rgb(173, 253, 226);
+    background-color: rgb(199, 255, 236);
     margin: auto;
     text-align: right;
 }
@@ -25,4 +25,20 @@
     height: 16.5%;
     width: 24%;
     background-color: azure;
+}
+
+.enMemoria{
+    height: 25%;
+    width: 98%;
+    text-align: right;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.principal{
+    height: 40%;
+    width: 98%;
+    text-align: right;
+    margin-top: 2px;
+    font-size: 50px;
 }

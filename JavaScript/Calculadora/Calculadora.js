@@ -1,41 +1,65 @@
-let memoriaSeleccion = [""];
-let memoriaIterator = 0;
+let memoria = [];
+let iterador = 0;
 let botonesFuncionales = document.getElementsByClassName("botonNumero");
 let botonIgual = document.getElementById("resultado");
+let pantallaPrincipal = document.getElementById("principal");
+let pantallaSecundaria = document.getElementById("enMemoria");
 
 function pulsarBoton(valor) {
     switch (valor) {
 
         case "C":
-            memoriaSeleccion.length=0
-            memoriaSeleccion = [""]
+            memoria.length = 0
+            iterador = 0;
+            pintarValores("0", false);
             break;
         case "CE":
-        
+            memoria.splice(iterador, 1);
+            pintarValores("0", true);
             break;
-
-        case "division":
-        case "multip":
-        case "resta":
-        case "suma":
-            memoriaIterator++;
-            memoriaSeleccion[memoriaIterator] = ""+valor;
-            memoriaIterator++;
-            memoriaSeleccion[memoriaIterator] = ""
+        case "/":
+        case "*":
+        case "-":
+        case "+":
+            iterador++;
+            memoria[iterador] = "" + valor;
+            iterador++;
+            pintarValores("0", true);
             break;
         default:
-            memoriaSeleccion[memoriaIterator] = ""+memoriaSeleccion[memoriaIterator] + valor;
-            console.log(memoriaSeleccion)
+            if (memoria[iterador] == undefined) {
+                memoria[iterador] = valor;
+            } else {
+                memoria[iterador] = '' + memoria[iterador] + valor;
+            }
+            pintarValores(memoria[iterador], false);
             break;
     }
 }
 
-function Calcular(memoriaSeleccion) {
-    console.log(memoriaSeleccion[0])
+function pintarValores(valorPintar, operador) {
+    pantallaPrincipal.innerHTML = valorPintar;
+
+    let total = "";
+    if (operador == false) {
+        for (var i = 0; i < memoria.length - 1; i++) {
+            total = total + " " + memoria[i];
+        }
+    } else {
+        for (var i = 0; i < memoria.length; i++) {
+            total = total + " " + memoria[i];
+        }
+    }
+
+    pantallaSecundaria.innerHTML = total;
+}
+
+function Calcular(memoria) {
+    console.log(memoria[0])
 }
 
 for (var i = 0; i < botonesFuncionales.length; i++) {
     botonesFuncionales[i].addEventListener('click', function () { pulsarBoton(this.value) });
 }
 
-botonIgual.addEventListener('click', function (){console.log(memoriaSeleccion) });
+botonIgual.addEventListener('click', function () { console.log(memoria) });
