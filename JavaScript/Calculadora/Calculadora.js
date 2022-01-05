@@ -45,21 +45,40 @@ function pintarValores(valorPintar, operador) {
         for (var i = 0; i < memoria.length - 1; i++) {
             total = total + " " + memoria[i];
         }
-    } else {
+    } else if (operador == true) {
         for (var i = 0; i < memoria.length; i++) {
             total = total + " " + memoria[i];
         }
     }
-
     pantallaSecundaria.innerHTML = total;
 }
 
-function Calcular(memoria) {
-    console.log(memoria[0])
+function Calcular() {
+    let resultado = parseInt(memoria[0]);
+    for (var i = 1; i < memoria.length; i = i + 2) {
+        switch (memoria[i]) {
+            case "/":
+                resultado = resultado / parseInt(memoria[i + 1]);
+                break;
+            case "*":
+                resultado = resultado * parseInt(memoria[i + 1]);
+                break;
+            case "-":
+                resultado = resultado - parseInt(memoria[i + 1]);
+                break;
+            case "+":
+                resultado = resultado + parseInt(memoria[i + 1]);
+                break;
+        }
+    }
+    console.log(resultado);
+    pintarValores(resultado);
+    memoria.length = 0
+    iterador = 0;
 }
 
 for (var i = 0; i < botonesFuncionales.length; i++) {
     botonesFuncionales[i].addEventListener('click', function () { pulsarBoton(this.value) });
 }
 
-botonIgual.addEventListener('click', function () { console.log(memoria) });
+botonIgual.addEventListener('click', function () { Calcular() });
