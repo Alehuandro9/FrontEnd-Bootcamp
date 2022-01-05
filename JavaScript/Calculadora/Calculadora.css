@@ -1,0 +1,28 @@
+.calculadora{
+    border: 3px solid black;
+    height: 600px;
+    width: 500px;
+}
+
+.pantalla{
+    border: 2px solid black;
+    height: 15%;
+    width: 98%;
+    background-color: rgb(173, 253, 226);
+    margin: auto;
+    text-align: right;
+}
+
+.botonNumero{
+    margin-top: 2px;
+    height: 16.5%;
+    width: 24%;
+    background-color: azure;
+}
+
+.botonResultado{
+    margin-top: 2px;
+    height: 16.5%;
+    width: 24%;
+    background-color: azure;
+}
