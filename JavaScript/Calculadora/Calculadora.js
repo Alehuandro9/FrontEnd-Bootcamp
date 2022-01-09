@@ -1,5 +1,6 @@
 let memoria = [];
 let iterador = 0;
+let nuevo = true;
 let botonesFuncionales = document.getElementsByClassName("botonNumero");
 let botonIgual = document.getElementById("resultado");
 let pantallaPrincipal = document.getElementById("principal");
@@ -21,21 +22,42 @@ function pulsarBoton(valor) {
         case "*":
         case "-":
         case "+":
-            iterador++;
-            memoria[iterador] = "" + valor;
-            iterador++;
-            pintarValores("0", true);
-            break;
+            if (memoria[iterador - 1] == "+" || memoria[iterador - 1] == "-" || memoria[iterador - 1] == "/" || memoria[iterador - 1] == "*") {
+                memoria[iterador - 1] = "" + valor;
+                pintarValores(memoria[iterador], true);
+                break;
+            } else if (memoria[iterador] != "" && memoria[iterador] != undefined) {
+                iterador++;
+                memoria[iterador] = "" + valor;
+                iterador++;
+                memoria[iterador] = memoria[iterador - 2]
+                nuevo = false;
+                pintarValores(memoria[iterador], true);
+                break;
+            } break;
         case "borrar":
-            if (memoria[iterador] == "") {
-                memoria[iterator] = memoria[iterator].substring(0, memoria[iterator].length - 1);
+            if (memoria[iterador] != "" && memoria[iterador] != undefined) {
+                memoria[iterador] = memoria[iterador].substring(0, memoria[iterador].length - 1);
                 pintarValores(memoria[iterador], false);
             }
-
+            break;
+        case "signo":
+            while (memoria[iterador] != "" && memoria[iterador] != undefined) {
+                if (memoria[iterador][0] == "-") {
+                    memoria[iterador] = memoria[iterador].substring(1);
+                    pintarValores(memoria[iterador], false);
+                    break;
+                } else {
+                    memoria[iterador] = "-" + memoria[iterador];
+                    pintarValores(memoria[iterador], false);
+                    break;
+                }
+            }
             break;
         default:
-            if (memoria[iterador] == undefined) {
+            if (memoria[iterador] == undefined || nuevo == false) {
                 memoria[iterador] = valor;
+                nuevo = true;
             } else {
                 memoria[iterador] = '' + memoria[iterador] + valor;
             }
@@ -78,7 +100,6 @@ function Calcular() {
                 break;
         }
     }
-    console.log(resultado);
     pintarValores(resultado);
     memoria.length = 0
     iterador = 0;
@@ -88,4 +109,4 @@ for (var i = 0; i < botonesFuncionales.length; i++) {
     botonesFuncionales[i].addEventListener('click', function () { pulsarBoton(this.value) });
 }
 
-botonIgual.addEventListener('click', function () { if(memoria.length>2){Calcular()}else(pintarValores("0", false)) });
+botonIgual.addEventListener('click', function () { if (memoria.length > 2) { Calcular() } else (pintarValores("0", false)) });
