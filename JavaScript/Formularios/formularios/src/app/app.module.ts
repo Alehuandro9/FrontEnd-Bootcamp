@@ -4,17 +4,19 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ValidationComponent } from './validation/validation.component';
+import { ContactosModule } from './contactos/contactos.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ValidationComponent
+    ValidationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ContactosModule
   ],
   providers: [],
   bootstrap: [AppComponent]
