@@ -1,0 +1,15 @@
+<p>
+  <input type="button" value="add" (click)="add()">
+  <input type="button" value="edit" (click)="edit(1)">
+</p>
+<form #miForm="ngForm">
+  <p>
+    Nombre:
+    <input type="text" id="nombre" name="nombre" [(ngModel)]="elemento.nombre" #nombre="ngModel"
+      required minlength="2" maxlength="10" esmayusculas>
+    <output class="error" [hidden]="!nombre.hasError('required')">Es obligatorio</output>
+    <output class="error" [hidden]="!nombre.hasError('minlength') && !nombre.hasError('maxlength')">
+      Debe tener entre 2 y 10 letras
+    </output>{{nombre.errors | json}}
+    <br>
+</form>
